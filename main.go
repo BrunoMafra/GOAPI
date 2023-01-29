@@ -1,6 +1,7 @@
 package main
 
 import (
+	"GOAPI/models"
 	"net/http"
 	"text/template"
 )
@@ -14,7 +15,6 @@ func main() {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-
-	temp.ExecuteTemplate(w, "Index", products)
-	defer conn.Close()
+	allProducts := models.SelectAllProducts()
+	temp.ExecuteTemplate(w, "Index", allProducts)
 }

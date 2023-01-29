@@ -1,6 +1,6 @@
 package models
 
-import "github.com/BrunoMafra/GOAPI/db"
+import "GOAPI/db"
 
 type Product struct {
 	Id          int
