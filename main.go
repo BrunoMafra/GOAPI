@@ -1,20 +1,12 @@
 package main
 
 import (
-	"GOAPI/models"
+	r "GOAPI/routes"
 	"net/http"
-	"text/template"
 )
-
-var temp = template.Must(template.ParseGlob("./templates/*.html"))
 
 func main() {
 	//Handle declara o caminho e a função que deve ser chamada
-	http.HandleFunc("/", index)
+	r.LoadRoutes()
 	http.ListenAndServe(":2000", nil)
-}
-
-func index(w http.ResponseWriter, r *http.Request) {
-	allProducts := models.SelectAllProducts()
-	temp.ExecuteTemplate(w, "Index", allProducts)
 }
